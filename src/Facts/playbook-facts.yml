@@ -1,0 +1,11 @@
+
+---
+- hosts: all
+  gather_facts: yes
+  tasks:
+          - debug: 
+                msg:
+                        - "Die OS Distribution ist: {{ansible_distribution}}"
+                        - "Der OS Name ist: {{ansible_system}}"
+                        - "Der OS Familie ist: {{ansible_os_family}}"
+

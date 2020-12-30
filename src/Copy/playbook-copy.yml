@@ -1,0 +1,17 @@
+
+- name: Kopiere eine Datei auf die Server
+  hosts: windows
+  tasks:
+          - name: Datei kopieren
+            win_copy:
+                    src:  /tmp/source.conf
+                    dest: c:/target.conf
+
+ 
+- name: Kopiere eine Datei auf die Server (Linux)
+  hosts: linux
+  tasks:
+          - name: Datei kopieren
+            copy:
+                    src:  /tmp/source.conf
+                    dest: /tmp/target.conf

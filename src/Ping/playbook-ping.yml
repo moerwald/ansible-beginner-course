@@ -1,0 +1,11 @@
+
+- name: Ping Test
+  hosts: linux
+  tasks:
+    - name: Ping Task
+      ping:
+- name: Ping Test Windows
+  hosts: windows
+  tasks:
+    - name: Ping Task
+      win_ping:

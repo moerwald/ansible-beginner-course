@@ -1,0 +1,17 @@
+
+---
+- hosts: linux
+  gather_facts: no
+  become: yes
+  tasks:
+          - name: Deinstalliere Pakete
+            yum:
+                  name: "{{item}}"
+                  state: absent # deinstalliere
+            loop:
+                    - php
+                    - unzip
+                    - git
+
+
+

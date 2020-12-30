@@ -1,0 +1,10 @@
+
+- name: Test play example
+  hosts: all
+  tasks:
+          - debug: 
+                msg: 
+                  - "Dies ist eine Nachricht"
+                  - "Dies ist eine weitere Nachricht"
+
+          

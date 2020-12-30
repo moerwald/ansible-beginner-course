@@ -1,0 +1,21 @@
+
+---
+- hosts: linux
+  gather_facts: no
+  become: yes
+  tasks:
+          - name: Installiere php
+            yum:
+                  name: php
+                  state: present
+          - name: Installiere unzip
+            yum:
+                  name: unzip
+                  state: present
+          - name: Installiere git
+            yum:
+                  name: git
+                  state: latest
+
+
+

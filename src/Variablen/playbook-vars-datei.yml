@@ -1,0 +1,16 @@
+
+- name: Test play example
+  hosts: localhost
+  tasks:
+          - name: Variable hinzufügen
+            include_vars:
+                    dir: vars
+          - name: Debug print
+            debug: 
+                      msg: 
+                        - "Der Wert von x ist: {{ x }} und der Typ ist: {{ x|type_debug }}"
+                        - "Der Wert von meine_zahl ist: {{ meine_zahl }} und der Typ ist: {{ meine_zahl|type_debug }}"
+                        - "Der Wert von mein_name ist: {{ mein_name }} und der Typ ist: {{ mein_name|type_debug }}"
+                        - "Der Wert von meine_bool ist: {{ meine_bool }} und der Typ ist: {{ meine_bool|type_debug }}"
+
+

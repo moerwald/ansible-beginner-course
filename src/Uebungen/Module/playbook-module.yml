@@ -1,0 +1,18 @@
+
+---
+
+- name: execute linux script
+  gather_facts: no
+  hosts: linux
+  tasks:
+          - script: script.sh
+            args:
+                creates: /tmp/echoHelloWorld.txt
+
+- name: execute windows script
+  gather_facts: no
+  hosts: windows
+  tasks:
+          - script: script.ps1
+            args:
+                creates: C:/echoHelloWorld.txt

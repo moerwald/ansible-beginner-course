@@ -1,0 +1,23 @@
+
+---
+
+- name: execute linux script
+  gather_facts: yes
+  hosts: all
+  tasks:
+          - name: Debug Ausgabe
+            debug:
+                msg:
+                    - "{{ansible_system}}"
+
+          - name: Linux script
+            script: script.sh
+            args:
+                creates: /tmp/echoHelloWorld.txt
+            when: ansible_system == "Linux"
+
+          - name: Windows script
+            script: script.ps1
+            args:
+                creates: C:/echoHelloWorld.txt
+            when: ansible_system == "WIN32NT"

@@ -1,0 +1,29 @@
+
+---
+- name: Play mit 3 Tasks
+  hosts: localhost
+  gather_facts: no
+  tasks:
+          - name: T1
+            debug:
+                    msg: "Das ist die erste Task"
+            tags:
+                    - eins
+                    - config
+          ##############
+          - name: T2
+            debug:
+                    msg: "Das ist die zweite Task"
+            tags:
+                    - zwei
+                    - config
+          ##############
+          - name: T3
+            debug:
+                    msg: "Das ist die dritte Task"
+            tags:
+                    - drei
+                    - always # immer ausfuehren
+
+
+

@@ -1,0 +1,21 @@
+---
+# tasks file for webserver
+
+- name: Installiere Apache Packages
+  yum:
+          name: httpd
+          state: present
+
+- name: Starte den Server
+  service:
+          name: httpd
+          state: started
+
+- name: Datei kopieren
+  copy:
+          src: index.html
+          dest: /var/www/html/
+  notify:
+        - restartweb # Call handler to restart the service
+
+ 

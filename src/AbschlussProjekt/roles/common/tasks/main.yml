@@ -1,0 +1,27 @@
+
+---
+# Playbook for common tasks
+
+- name: Enable Firewall on all the hosts
+  service:
+        name: firewalld
+        state: started
+        enabled: yes
+
+- name: Enable Firewall port for SSH
+  firewalld:
+        port: 22/tcp
+        permanent: true
+        state: enabled
+        immediate: yes
+
+- name: Disallow password authentication
+  lineinfile:
+        dest: /etc/ssh/sshd_config
+        regexp: "^PasswordAuthentication"
+        # For production we can set this to no -> actually it's yes, for testing purposes ...
+        line: "PasswordAuthentication yes"
+        state: present
+  notify: restart ssh
+        
+

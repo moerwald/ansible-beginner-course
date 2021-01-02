@@ -1,0 +1,6 @@
+
+---
+
+- name: Server ausrollen
+  hosts: linux
+  become: yes

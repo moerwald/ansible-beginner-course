@@ -1,0 +1,24 @@
+---
+
+- name: Install httpd and php
+  yum: name={{ item }} state=present
+  with_items:
+   - httpd
+   - php
+   - php-mysqlnd
+
+- name: Install web role specific dependencies
+  yum: name={{ item }} state=installed
+  with_items:
+   - git
+
+- name: Start & Enable Apache Server to start on boot
+  service: name=httpd state=started enabled=yes
+
+- name: Enable the firewall port for Apache
+  firewalld: port=80/tcp permanent=true state=enabled immediate=yes
+
+- name: Enable network conenction
+  shell: setsebool -P httpd_can_network_connect_db 1
+
+- include: copy_code.yml

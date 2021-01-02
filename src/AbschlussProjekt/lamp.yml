@@ -1,0 +1,21 @@
+
+---
+
+- name: Anwenden der Config Dateien auf all Server
+  hosts: all
+  become: yes
+  roles:
+        - common
+
+- name: Ausrollen von MySQL 
+  hosts: dbservers
+  become: yes
+  roles:
+        - db
+
+- name: Ausrollen von Apache, PHP
+  hosts: webservers
+  become: yes
+  roles:
+        - web
+ 

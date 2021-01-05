@@ -1,0 +1,23 @@
+
+---
+
+- name: Test Register Modul
+  hosts: linux
+  become: yes
+  tasks:
+    - name: Ensure EPEL release is installed
+      yum:
+        name: epel-release
+        state: present
+    - name: Ensure pwgen is installed
+      yum:
+        name: pwgen
+        state: present
+    - name: Generate password
+      shell: pwgen -N 1 -s 30
+      register: myPassword
+    - name: Print generated password
+      debug:
+        msg: 
+          - "The password is {{ myPassword }}"
+          - "Stdout {{ myPassword.stdout }}"
